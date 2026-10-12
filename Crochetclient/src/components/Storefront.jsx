@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import './Storefront.css'
+import '../styles/Storefront.css'
 
 const money = (value, currency) => new Intl.NumberFormat('en', { style: 'currency', currency }).format(value)
 const safeLink = value => { try { const url = new URL(value); return url.protocol === 'https:' ? url.href : '' } catch { return '' } }

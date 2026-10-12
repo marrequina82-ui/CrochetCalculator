@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { request } from './api'
+import { request } from '../utils/api'
 
 function StockItem({ item, priceOf, onSaved }) {
   const [quantity, setQuantity] = useState(String(item.stock ?? 0))

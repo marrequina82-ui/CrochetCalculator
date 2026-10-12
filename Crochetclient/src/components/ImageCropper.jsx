@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { cropRect } from './crop'
+import { cropRect } from '../utils/crop'
 
 export default function ImageCropper({ source, onApply, onCancel }) {
   const dialog = useRef(null)

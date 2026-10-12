@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { request } from './api'
+import { request } from '../utils/api'
 
 const labels = { created: 'Created project', edited: 'Edited project', deleted: 'Deleted project', stock_updated: 'Updated stock' }
 export default function Activity() {
