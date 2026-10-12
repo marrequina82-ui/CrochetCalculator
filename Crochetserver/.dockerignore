@@ -1,0 +1,7 @@
+.git
+.env*
+*.exe
+server
+*.log
+coverage*
+.gocache
