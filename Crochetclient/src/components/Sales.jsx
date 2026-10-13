@@ -218,33 +218,7 @@ export default function Sales({ projects, money, costs, onUpdateProject }) {
         Track individual sales for Crochet and Fuzzy Wire crafts, with combined totals and inventory valuation.
       </p>
 
-      {/* Classification Navigation Tabs */}
-      <div className="classification-tabs" role="tablist">
-        <button
-          type="button"
-          className={`class-tab ${categoryView === 'combined' ? 'active' : ''}`}
-          onClick={() => setCategoryView('combined')}
-        >
-          <span>🌟 Combined Sales</span>
-          <small>{combinedStats.count} items</small>
-        </button>
-        <button
-          type="button"
-          className={`class-tab ${categoryView === 'Crochet' ? 'active' : ''}`}
-          onClick={() => setCategoryView('Crochet')}
-        >
-          <span>🧶 Crochet Sales</span>
-          <small>{crochetStats.count} items</small>
-        </button>
-        <button
-          type="button"
-          className={`class-tab ${categoryView === 'Fuzzy Wire' ? 'active' : ''}`}
-          onClick={() => setCategoryView('Fuzzy Wire')}
-        >
-          <span>✨ Fuzzy Wire Sales</span>
-          <small>{fuzzyStats.count} items</small>
-        </button>
-      </div>
+
 
       {/* KPI Cards */}
       <div className="sales-kpi-grid">
@@ -304,6 +278,19 @@ export default function Sales({ projects, money, costs, onUpdateProject }) {
             {categoryView === 'combined' ? 'All Recent Sales' : `${categoryView} Sales History`}
             <span className="count">{filteredSales.length}</span>
           </h2>
+          <div className="sales-filter-dropdown">
+            <select
+              id="sales-category-select"
+              className="sales-category-select"
+              value={categoryView}
+              onChange={e => setCategoryView(e.target.value)}
+              aria-label="Filter sales by craft classification"
+            >
+              <option value="combined">🌟 Combined Sales ({combinedStats.count} items)</option>
+              <option value="Crochet">🧶 Crochet Sales ({crochetStats.count} items)</option>
+              <option value="Fuzzy Wire">✨ Fuzzy Wire Sales ({fuzzyStats.count} items)</option>
+            </select>
+          </div>
         </div>
 
         {filteredSales.length === 0 ? (
