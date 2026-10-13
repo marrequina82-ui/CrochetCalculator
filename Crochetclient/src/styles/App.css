@@ -17,3 +17,54 @@
 .project-card{position:relative}.project-card-main{display:block;border:0;padding:0;background:transparent;color:inherit;text-align:left;width:100%}.project-card-main>img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.project-card-info{padding:16px}.card-price{display:block;margin-top:9px;font-size:17px;font-weight:600;color:#704c62;overflow-wrap:anywhere}.project-card>.card-actions{position:absolute;top:10px;right:10px;display:flex;gap:6px;padding:0}.card-actions button{width:40px;height:40px;display:grid;place-items:center;border:1px solid #e5dad1;border-radius:10px;background:#fffdf9;color:#704c62;box-shadow:0 2px 8px #0002}.card-actions button:hover{background:#f2ebee}.card-actions .delete-action{color:#a53e3e}.card-actions svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.project-card-main:focus-visible{outline-offset:-4px}.project-detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:20px 0 28px;align-items:start}.project-detail-image{display:block;width:100%;max-height:520px;object-fit:contain;background:#f1eee7;border-radius:14px}.project-detail-summary h2{font-size:34px;overflow-wrap:anywhere;margin:16px 0 24px}.detail-price{font:38px Georgia,serif;color:#704c62;overflow-wrap:anywhere}.detail-costs>div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #e6ddd5;font-size:13px}.detail-costs dt{color:#7c7068}.detail-costs dd{margin:0;text-align:right;overflow-wrap:anywhere}.detail-pattern p{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;margin-bottom:0}@media(max-width:650px){.project-detail-layout{grid-template-columns:1fr;gap:22px}.project-detail-summary h2{font-size:28px}.card-actions button{width:36px;height:36px}.project-card>.card-actions{top:7px;right:7px;gap:4px}}
 
 .project-modal.delete-modal{width:min(440px,calc(100% - 32px));padding:30px;border-radius:20px;background:#fffdf9}.delete-symbol{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#f8e9e6;color:#a34843;margin-bottom:22px}.delete-symbol svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.delete-modal .eyebrow{margin-bottom:10px}.delete-modal h2{font-size:30px;margin-bottom:14px}.delete-modal #delete-description{font-size:13px;line-height:1.8;color:#7c7068;margin-bottom:22px}.delete-preview{display:flex;align-items:center;gap:14px;padding:12px;background:#f5f0ea;border:1px solid #e9e0d7;border-radius:12px;margin-bottom:24px}.delete-preview img,.delete-placeholder{width:58px;height:58px;object-fit:cover;border-radius:8px;flex-shrink:0}.delete-placeholder{display:grid;place-items:center;background:#e5eadd;color:#81926e;font-size:30px}.delete-preview>div{min-width:0}.delete-preview strong{display:block;font-size:14px;overflow-wrap:anywhere;line-height:1.5}.delete-preview>div>span{display:block;font-size:12px;color:#795469;margin-top:5px;overflow-wrap:anywhere}.delete-buttons{display:flex;gap:12px}.delete-buttons button{flex:1;min-height:46px;border-radius:9px;font-size:13px;font-weight:600}.cancel-delete{background:#fffdf9;border:1px solid #dfd5cb;color:#655c57}.cancel-delete:hover{background:#f5f0ea}.confirm-delete{background:#a34843;border:1px solid #a34843;color:white}.confirm-delete:hover{background:#8c3935}.delete-status:empty{display:none}.delete-status{display:block;margin-top:12px;font-size:12px;color:#7c7068}@media(max-width:480px){.project-modal.delete-modal{padding:24px}.delete-modal h2{font-size:27px}}
+
+/* Craft Category Classification & Badges */
+.card-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.category-tag, .category-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; line-height: 1.4; letter-spacing: 0.2px; }
+.category-tag.category-crochet, .category-pill.crochet { background: #f0edf8; color: #634b82; border: 1px solid #dfd6f0; }
+.category-tag.category-fuzzy, .category-pill.fuzzy { background: #fef3e2; color: #925c1a; border: 1px solid #fae1be; }
+
+/* Category Filter Pills / Toolbar */
+.category-filter-bar { display: flex; align-items: center; gap: 8px; margin: 16px 0 20px; flex-wrap: wrap; }
+.cat-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; color: var(--muted, #656b80); background: #fff; border: 1px solid var(--line, #e1e4f0); border-radius: 20px; cursor: pointer; transition: all 0.15s ease; }
+.cat-btn:hover { background: var(--tint, #eef0ff); color: var(--accent, #575fa8); border-color: var(--accent, #575fa8); }
+.cat-btn.active { background: var(--accent, #575fa8); color: #fff; border-color: var(--accent, #575fa8); box-shadow: 0 2px 6px rgba(87, 95, 168, 0.25); }
+
+/* Sales Classification Navigation Tabs */
+.classification-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 20px 0 28px; }
+.class-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 14px 18px; background: #fff; border: 2px solid var(--line, #e1e4f0); border-radius: 14px; color: var(--ink, #2b3047); cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.15s ease; text-align: center; }
+.class-tab span { font-size: 15px; }
+.class-tab small { font-size: 12px; font-weight: 500; color: var(--muted, #656b80); }
+.class-tab:hover { border-color: var(--accent, #575fa8); background: var(--tint, #eef0ff); }
+.class-tab.active { border-color: var(--accent, #575fa8); background: #fff; box-shadow: 0 4px 14px rgba(87, 95, 168, 0.15); }
+.class-tab.active span, .class-tab.active small { color: var(--accent, #575fa8); }
+
+/* Sales KPI Grid & Cards */
+.sales-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 28px; }
+.sales-kpi-card { padding: 22px 20px; background: #fff; border: 1px solid var(--line, #e1e4f0); border-radius: 14px; display: flex; flex-direction: column; gap: 6px; }
+.kpi-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted, #656b80); }
+.kpi-value { font-size: 26px; font-weight: 700; color: var(--ink, #2b3047); letter-spacing: -0.5px; line-height: 1.2; }
+.kpi-value.kpi-profit { color: #2b7a4b; }
+.kpi-breakdown { font-size: 12px; color: var(--muted, #656b80); line-height: 1.5; margin-top: 4px; }
+
+/* Revenue Share Bar (Combined mode) */
+.sales-share-box { background: #fff; border: 1px solid var(--line, #e1e4f0); border-radius: 14px; padding: 18px 22px; margin-bottom: 30px; }
+.share-labels { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; font-weight: 600; color: var(--ink, #2b3047); margin-bottom: 10px; flex-wrap: wrap; }
+.share-bar { display: flex; height: 14px; border-radius: 8px; overflow: hidden; background: #f1f2f6; }
+.share-segment.crochet { background: #634b82; transition: width 0.3s ease; }
+.share-segment.fuzzy { background: #d9822b; transition: width 0.3s ease; }
+
+/* Sales Log Table */
+.sales-log-section { background: #fff; border: 1px solid var(--line, #e1e4f0); border-radius: 14px; padding: 24px; }
+.sales-log-section .section-heading { margin-bottom: 20px; }
+.sales-table-wrapper { overflow-x: auto; }
+.sales-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.sales-table th { padding: 12px 14px; font-weight: 600; color: var(--muted, #656b80); border-bottom: 2px solid var(--line, #e1e4f0); white-space: nowrap; }
+.sales-table td { padding: 14px; border-bottom: 1px solid var(--line, #e1e4f0); color: var(--ink, #2b3047); vertical-align: middle; }
+.sales-table tr:hover td { background: #fafbfe; }
+.profit-cell { color: #2b7a4b; font-weight: 600; }
+.note-cell { color: var(--muted, #656b80); font-style: italic; max-width: 220px; }
+.sale-modal { width: min(540px, calc(100% - 32px)); }
+
+@media (max-width: 1000px) { .sales-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .classification-tabs { grid-template-columns: 1fr; } .sales-kpi-grid { grid-template-columns: 1fr; } }

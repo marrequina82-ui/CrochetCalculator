@@ -52,6 +52,11 @@ export function validateProject(p) {
       : bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WEBP'
     if (!valid || bytes.toString('base64') !== match[2]) fail(400, 'Invalid photo.')
   }
+  if (!p.category || !['Crochet', 'Fuzzy Wire'].includes(p.category)) {
+    p.category = 'Crochet'
+  }
+  if (!Array.isArray(p.sales)) p.sales = []
+  if (!Number.isFinite(Number(p.sold)) || Number(p.sold) < 0) p.sold = 0
   delete p.id
   delete p.stock
   return p
@@ -60,10 +65,10 @@ export function publicItem(row) {
   const p = row.data
   const n = key => Number.isFinite(Number(p[key])) ? Number(p[key]) : 0
   const base = n('yarn') + n('materials') + n('hours') * n('rate')
-  return { id: Number(row.id), name: p.name, image: p.image, currency: p.currency,
+  return { id: Number(row.id), name: p.name, image: p.image, currency: p.currency, category: p.category || 'Crochet',
     price: Math.round(base * (1 + n('overhead') / 100) * (1 + n('profit') / 100) * 100) / 100, stock: row.stock }
 }
-const project = row => ({ ...row.data, id: Number(row.id), stock: row.stock })
+const project = row => ({ category: 'Crochet', sold: 0, sales: [], ...row.data, id: Number(row.id), stock: row.stock })
 
 export function createHandler(databaseProvider = getDatabase) {
   return async function handler(req, res) {

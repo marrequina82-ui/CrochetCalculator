@@ -4,7 +4,7 @@ import { createServer } from 'node:http'
 import { createHandler, validateProject, publicItem } from './app.js'
 import { transaction } from './database.js'
 
-const valid = () => ({ name: 'Fish', yarn: '15', materials: '10', hours: '0.2', rate: '50', overhead: '10', profit: '25', currency: 'PHP', status: 'Completed', pattern: '', image: '' })
+const valid = () => ({ name: 'Fish', yarn: '15', materials: '10', hours: '0.2', rate: '50', overhead: '10', profit: '25', currency: 'PHP', status: 'Completed', pattern: '', image: '', category: 'Crochet', sold: 0, sales: [] })
 test('project validation rejects invalid costs, injected IDs and disguised photos', () => {
   assert.throws(() => validateProject({ ...valid(), rate: '-1' }), /Invalid rate/)
   assert.throws(() => validateProject({ ...valid(), yarn: 'Infinity' }), /Invalid yarn/)
@@ -14,7 +14,7 @@ test('project validation rejects invalid costs, injected IDs and disguised photo
 test('catalog calculates price and excludes private fields', () => {
   const item = publicItem({ id: '3', stock: 10, data: valid() })
   assert.equal(item.price, 48.13)
-  assert.deepEqual(Object.keys(item).sort(), ['currency','id','image','name','price','stock'])
+  assert.deepEqual(Object.keys(item).sort(), ['category','currency','id','image','name','price','stock'])
 })
 test('failed mutations roll back and release the same connection', async () => {
   const calls = []
