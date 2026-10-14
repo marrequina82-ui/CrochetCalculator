@@ -2,7 +2,7 @@
   "name": "mz-crafties",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22.12" },
+  "engines": { "node": "22.x" },
   "scripts": {
     "dev": "node scripts/dev.js",
     "start": "node --env-file-if-exists=.env Crochetserver/server.js",
