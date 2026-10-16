@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+*.exe
+.env
+.env.local
+.local/
+.DS_Store
+compose.log
+.gocache/
+**/.gocache/
+*.dump
+*.log
