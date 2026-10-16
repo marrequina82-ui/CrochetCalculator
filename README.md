@@ -5,11 +5,10 @@ React frontend and Node.js backend connected to the Supabase HTTPS Data API. Sup
 ## Supabase API setup (recommended)
 
 1. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the root `.env` using your Supabase project URL and server secret key (`sb_secret_...`). Never put the secret key in a `VITE_` variable or frontend code. API mode takes priority over any existing `DATABASE_URL`.
-2. Run `Crochetserver/schema.sql`, then `Crochetserver/supabase-api.sql` in the Supabase SQL Editor. These scripts preserve existing records and install the private API function, permissions, and history triggers.
+2. Run `server/schema.sql`, then `server/supabase-api.sql` in the Supabase SQL Editor. These scripts preserve existing records and install the private API function, permissions, and history triggers.
 3. If no account has a PIN yet, run `SELECT assign_account_pin('your-email@example.com', 'YOUR_SIX_DIGIT_PIN');` in the SQL Editor, replacing the placeholders.
 4. Run `npm.cmd run dev` and open http://localhost:5173. Startup checks the remote API function. All PIN checks and mutations run through server-only RPC calls; mutations and their history use one database transaction.
 
-For Vercel, set `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, and `COOKIE_SECURE=true`, then redeploy. Run both SQL setup files before deployment. Docker uses the same API variables from `.env`.
 
 The sections below also describe the optional older direct PostgreSQL connection mode.
 
@@ -17,22 +16,15 @@ The sections below also describe the optional older direct PostgreSQL connection
 
 Use Node.js 22.12 or newer (Node.js 24 recommended).
 
-1. Run `npm.cmd ci` in the repository root and `npm.cmd --prefix Crochetclient ci`.
+1. Run `npm.cmd ci` in the repository root and `npm.cmd --prefix client ci`.
 2. Copy `.env.example` to `.env`. Set `DATABASE_URL` to your private Supabase PostgreSQL connection URL from Connect. Use the session pooler for IPv4. Keep credentials out of frontend variables and source control.
 3. For an empty Supabase database, import `.local/MZ-Supabase-import.sql` once to preserve existing accounts, images, inventory and history. Never rerun the snapshot against populated application tables. For a new empty workspace without a snapshot, the backend creates its schema on startup.
 4. Run `npm run dev` in the repository root. This starts both the Node.js API and React frontend. Open http://localhost:5173. Press Ctrl+C to stop both. Frontend changes use Vite hot reload; restart the command after backend changes.
 
 For backend-only operation, use `npm.cmd start` or `powershell -ExecutionPolicy Bypass -File .\Start-TrackerBackend.ps1`.
 
-The API uses TLS certificate verification with the bundled Supabase CA certificate in `Crochetserver/certs/supabase-ca.crt`. To override it, set `SUPABASE_CA_CERT` to your downloaded PEM certificate, using literal `\n` for newlines in `.env`. The local server initializes `Crochetserver/schema.sql` without deleting existing data.
+The API uses TLS certificate verification with the bundled Supabase CA certificate in `server/certs/supabase-ca.crt`. To override it, set `SUPABASE_CA_CERT` to your downloaded PEM certificate, using literal `\n` for newlines in `.env`. The local server initializes `server/schema.sql` without deleting existing data.
 
-## Vercel
-
-Deploy from the repository root, with no build/install/output overrides. `vercel.json` builds React and sends `/api/*` to the JavaScript function `api/index.js`. Set server environment variables `DATABASE_URL` and `COOKIE_SECURE=true`. Run `Crochetserver/schema.sql` in the Supabase SQL Editor before deployment; serverless requests do not perform schema migrations. Redeploy after setting variables. `/api/health` confirms the API runtime is reachable; loading projects or the catalog checks database access.
-
-## Docker and CI
-
-Set `DATABASE_URL` in the root `.env`, then run `docker compose up --build -d --wait`. Open http://localhost:3000. Docker runs Node.js and the React static client, connecting only to Supabase. Set `COOKIE_SECURE=true` when accessed through HTTPS. Jenkins builds these images and checks the UI and API runtime.
 
 ## Accounts and history
 

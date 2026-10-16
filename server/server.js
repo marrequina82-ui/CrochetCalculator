@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import handler from './app.js'
 import { initializeDatabase } from './database.js'
 
-const clientDist = fileURLToPath(new URL('../Crochetclient/dist', import.meta.url))
+const clientDist = fileURLToPath(new URL('../client/dist', import.meta.url))
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -94,7 +94,7 @@ try {
       '  3. Check your internet connection.'
     )
   }
-  if (error.code === 'PGRST202') console.error('Run Crochetserver/schema.sql, then Crochetserver/supabase-api.sql in the Supabase SQL Editor.')
+  if (error.code === 'PGRST202') console.error('Run server/schema.sql, then server/supabase-api.sql in the Supabase SQL Editor.')
   if (!error.code && error.message !== 'fetch failed') console.error(error.message)
   if (error.code === '28P01') {
     console.error('Supabase rejected the database login. Update DATABASE_URL in .env with the correct database password (URL-encoded), or reset the database password in Supabase Database Settings.')
