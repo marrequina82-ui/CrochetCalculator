@@ -118,6 +118,33 @@ footer span { font-size: 12px; line-height: 1.6; }
   .project-detail-layout { grid-template-columns: 1fr; gap: 20px; }
   .project-detail-image { max-height: 420px; }
   .details-grid { grid-template-columns: 1fr; }
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(248, 249, 253, 0.94);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line, #e1e4f0);
+    box-shadow: 0 -4px 16px rgba(43, 48, 71, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2px;
+    font-size: 13px;
+    padding: 9px 16px max(11px, env(safe-area-inset-bottom));
+  }
+  footer span {
+    max-width: none;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.4;
+  }
 }
 @media (max-width: 540px) {
   .topbar { min-height: 82px; padding-block: 16px; flex-wrap: wrap; gap: 12px; }
@@ -125,7 +152,7 @@ footer span { font-size: 12px; line-height: 1.6; }
   .brand-sub { font-size: 8px; letter-spacing: 1px; }
   .account-actions { margin-left: auto; gap: 8px; }
   .account-email, .account-avatar { display: none; }
-  main { padding-block: 22px 30px; }
+  main { padding-block: 22px calc(75px + env(safe-area-inset-bottom, 0px)); }
   .intro { border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; }
   .intro h1 { font-size: 24px; letter-spacing: -.4px; }
   .intro .eyebrow { font-size: 8px; letter-spacing: 1px; }
@@ -159,8 +186,33 @@ footer span { font-size: 12px; line-height: 1.6; }
   .auth-card h2 { font-size: 29px; }
   .auth-story h1 { font-size: 36px; }
   .auth-story > p:not(.eyebrow) { font-size: 14px; }
-  footer { align-items: flex-start; font-size: 17px; }
-  footer span { max-width: 150px; text-align: right; }
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(248, 249, 253, 0.94);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line, #e1e4f0);
+    box-shadow: 0 -4px 16px rgba(43, 48, 71, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2px;
+    font-size: 13px;
+    padding: 9px 16px max(11px, env(safe-area-inset-bottom));
+  }
+  footer span {
+    max-width: none;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.4;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   button, a, .project-card { transition: none; }
