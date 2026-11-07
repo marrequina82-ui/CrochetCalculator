@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "installCommand": "npm install && npm install --prefix Crochetclient",
+  "installCommand": "npm ci && npm ci --prefix client --include=dev",
   "buildCommand": "npm run build",
-  "outputDirectory": "Crochetclient/dist",
+  "outputDirectory": "client/dist",
   "rewrites": [
     {
       "source": "/api/:path*",
